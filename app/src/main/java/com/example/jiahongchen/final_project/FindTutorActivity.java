@@ -1,7 +1,9 @@
 package com.example.jiahongchen.final_project;
 
 import android.app.ProgressDialog;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -37,6 +39,8 @@ public class FindTutorActivity extends AppCompatActivity {
 //    Bundle saveInfo;
 //    int childID;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -65,7 +69,6 @@ public class FindTutorActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Find Your Tutor");
     }
-
 //    private void setListView(){
 //        List<String> keys = new ArrayList<String>(tutors.values());
 //        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(TextbookActivity.this, android.R.layout.activity_list_item, keys);
@@ -128,7 +131,6 @@ public class FindTutorActivity extends AppCompatActivity {
 
                     builder.append("\n").append(link.attr("href")).append("\n").append(link.text());
                     tutors.put(link.text(), link.attr("href"));
-
                 }
             } catch (IOException e) {
 //                e.printStackTrace();

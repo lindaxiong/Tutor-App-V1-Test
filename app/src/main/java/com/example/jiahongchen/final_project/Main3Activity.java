@@ -1,6 +1,8 @@
 package com.example.jiahongchen.final_project;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -34,6 +36,7 @@ public class Main3Activity extends AppCompatActivity implements GoogleApiClient.
 
     private Button askBtn;
     private Button tbBtn;
+    private TextView question;
     Button locBtn;
     Button todoBtn;
 
@@ -47,8 +50,6 @@ public class Main3Activity extends AppCompatActivity implements GoogleApiClient.
     TextView shakeCountTextView;
 
     Boolean change = true;
-
-    String[] lucky = {"Good Luck", "Have Fun", "Come On", "Awesome", "Great Job", "Amazing"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,7 +101,13 @@ public class Main3Activity extends AppCompatActivity implements GoogleApiClient.
         });
 
         todoBtn = findViewById(R.id.todoBtn);
-        todoBtn.setClickable(false);
+        todoBtn.setOnClickListener(new View.OnClickListener() {
+                                       @Override
+                                       public void onClick(View view) {
+                                           startActivity(new Intent(Main3Activity.this, QuestionListActivity.class));
+                                       }
+
+        });
 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         mAccelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -150,9 +157,6 @@ public class Main3Activity extends AppCompatActivity implements GoogleApiClient.
 //                    change = false;
 //                    dialog();
 
-
-                    int randomNum = ThreadLocalRandom.current().nextInt(0, lucky.length );
-                    todoBtn.setText(lucky[randomNum%lucky.length]);
 //                    Log.d("count", String.valueOf(mShakeCount));
 //                    Log.d("length", String.valueOf(lucky.length));
 
@@ -191,6 +195,7 @@ public class Main3Activity extends AppCompatActivity implements GoogleApiClient.
     public void onAccuracyChanged(Sensor sensor, int i) {
 
     }
+
 
     @Override
     public void onResume() {

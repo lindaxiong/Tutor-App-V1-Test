@@ -1,65 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.jiahongchen.final_project.AskQuestionActivity">
+    android:layout_height="match_parent">
 
-    <Button
-        android:text="Take Picture"
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:background="@android:color/transparent"
+        tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+        android:hint="What's your question?"
+        android:inputType="textCapSentences|textMultiLine"
+        android:maxLines="8"
+        android:scrollHorizontally="true"
+        android:textColor="@android:color/black"
+        android:textColorHint="@color/lightGrey"
+        android:textSize="18sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:background="@color/lightGrey" />
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/takePictureButton"
-        android:onClick="takePicture"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        />
+        android:orientation="horizontal">
 
-    <Button
-        android:text="Image Library"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/takePictureButton"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/imageLibraryButton"
-        android:onClick="getImageFromLibrary"
-        app:layout_constraintTop_toBottomOf="@+id/takePictureButton"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+        <ImageButton
+            android:id="@+id/takePictureButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="18dp"
+            android:onClick="takePicture"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/icon_camera_grey" />
+
+        <ImageButton
+            android:id="@+id/imageLibraryButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="18dp"
+            android:onClick="getImageFromLibrary"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/icon_photo_grey" />
+
+        <Button
+            android:id="@+id/submitBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="14dp"
+            android:text="Submit"
+            android:background="@android:color/transparent"
+            app:layout_constraintTop_toBottomOf="@+id/editText"
+            app:layout_constraintRight_toRightOf="parent" />
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/imageLibraryButton"
-        android:layout_centerHorizontal="true"
         android:layout_marginBottom="200dp"
         android:layout_marginTop="100dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:color/background_light" />
+</LinearLayout>
+<!--<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--tools:context="com.example.jiahongchen.final_project.AskQuestionActivity">-->
 
-    <EditText
-        android:id="@+id/editText"
-        style="@style/Widget.AppCompat.EditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:text="Problem Description..."
-        app:layout_constraintTop_toBottomOf="@id/imageView"
-        tools:layout_editor_absoluteX="84dp"
-        tools:ignore="MissingConstraints" />
+    <!--<Button-->
+        <!--android:text="Take Picture"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:id="@+id/takePictureButton"-->
+        <!--android:onClick="takePicture"-->
+        <!--app:layout_constraintRight_toRightOf="parent"-->
+        <!--app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--/>-->
 
-    <Button
-        android:id="@+id/submitBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Submit"
-        app:layout_constraintTop_toBottomOf="@+id/editText"
-        app:layout_constraintRight_toRightOf="parent" />
+    <!--<Button-->
+        <!--android:text="Image Library"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/takePictureButton"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:id="@+id/imageLibraryButton"-->
+        <!--android:onClick="getImageFromLibrary"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/takePictureButton"-->
+        <!--app:layout_constraintRight_toRightOf="parent"-->
+        <!--app:layout_constraintLeft_toLeftOf="parent"/>-->
 
-</android.support.constraint.ConstraintLayout>
+
+
+    <!--<EditText-->
+        <!--android:id="@+id/editText"-->
+        <!--style="@style/Widget.AppCompat.EditText"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:ems="10"-->
+        <!--android:text="Problem Description..."-->
+        <!--app:layout_constraintTop_toBottomOf="@id/imageView"-->
+        <!--tools:layout_editor_absoluteX="84dp"-->
+        <!--tools:ignore="MissingConstraints" />-->
+
+<!--</android.support.constraint.ConstraintLayout>-->

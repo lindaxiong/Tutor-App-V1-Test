@@ -1,8 +1,10 @@
 package com.example.jiahongchen.final_project;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -14,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 public class AskQuestionActivity extends AppCompatActivity {
@@ -21,28 +24,37 @@ public class AskQuestionActivity extends AppCompatActivity {
     static final int TAKE_PHOTO_PERMISSION = 1;
     static final int REQUEST_TAKE_PHOTO = 2;
     static final int PICK_IMAGE_REQUEST = 3;
+    DatabaseHelper mDbHelper = new DatabaseHelper(this);
+
 
     ImageView imageView;
-    Button takePictureButton;
+    ImageButton takePictureButton;
     EditText editText;
 
     Uri file;
     String path;
 
     private Button submitBtn;
+    SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ask_question);
 
-        takePictureButton = (Button) findViewById(R.id.takePictureButton);
+        DatabaseHelper helper = new DatabaseHelper(this);
+        db = mDbHelper.getWritableDatabase();
+        helper.onCreate(db);
+
+        takePictureButton = (ImageButton) findViewById(R.id.takePictureButton);
 
         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[] { android.Manifest.permission.CAMERA, android.Manifest.permission.WRITE_EXTERNAL_STORAGE }, TAKE_PHOTO_PERMISSION);
         }
 
         imageView = (ImageView) findViewById(R.id.imageView);
+
+
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Ask Quick Question");
@@ -51,6 +63,14 @@ public class AskQuestionActivity extends AppCompatActivity {
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String text = editText.getText().toString();
+                        ContentValues values = new ContentValues();
+                values.put("question", text);
+                long newRowId;
+                newRowId = db.insert(
+                        "questions",
+                        null,
+                        values);
                 startActivity(new Intent(AskQuestionActivity.this, Main3Activity.class));
             }
         });
