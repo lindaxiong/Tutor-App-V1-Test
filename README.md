@@ -1,4 +1,4 @@
-# CS 4720 Final Project: TeachMe
+# TeachMe
 
 TeachMe is to tutoring like Uber is for ride services. TeachMe is an android app that allows users to find and communicate with tutors. It will help tutees who want to get a little head start lectures, need a study plan to cram for next week’s Psychology exam, want to learn some basic C++ programming, help on a Chemistry homework problem, etc. TeachMe allow tutee to request tutoring appointments with tutor, send pictures and descriptions of what the tutee needs help on, and choose tutors from a list of tutors on the app. TeachMe will solve the problem for users who just want a quick tutoring session, in any format that the tutor and tutee agree on, rather than paying full tuition on a regular basis for formal academic setting or in expensive tutoring centers such as Kumon and C2 Education. TeachMe can also be a way for tutee to skip the long line at professor office hours. 
 
